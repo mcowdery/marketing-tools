@@ -14,6 +14,11 @@ posts for finding consulting work — without ever posting anything automaticall
    touched, and diffs for the non-noisy ones (lockfiles, snapshots and binary assets are listed but
    skipped). It does not call any model — it's just the raw material.
 
+   For a recurring cadence across every project at once, list their paths in `repos.txt` and run
+   `node digest.mjs --since=14d` — it calls `gather.mjs` for each one in turn. Do this every 1-2
+   weeks, not per-commit, so there's enough material for a real thread each time: a standing
+   "what happened" habit rather than a one-off write-up.
+
 2. **Draft.** Open the briefing and hand it to Claude (this Claude Code session, or any other) — the
    briefing file ends with a ready-made instruction asking for a short case-study or LinkedIn-style
    post aimed at engineering leads, with a guard against claiming outcomes that didn't happen. Save
@@ -31,5 +36,6 @@ posts for finding consulting work — without ever posting anything automaticall
    few rounds you can see which angle (governance? testing discipline? multi-agent orchestration?)
    actually gets replies — and ditch the rest.
 
-No dependencies, no API keys, nothing scheduled. Re-run `gather.mjs` whenever you've got a new chunk
-of work worth writing up, roughly every 1-2 weeks rather than per-commit.
+No dependencies, no API keys, nothing scheduled. Re-run `gather.mjs` (or `digest.mjs` for all repos
+at once) whenever you've got a new chunk of work worth writing up, roughly every 1-2 weeks rather
+than per-commit.

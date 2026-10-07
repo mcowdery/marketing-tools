@@ -1,0 +1,9 @@
+{
+  "name": "marketing-tools",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "gather": "node gather.mjs",
+    "log": "node log.mjs"
+  }
+}

@@ -1,8 +1,29 @@
 # Status — the consulting-business side project
 
-Not part of city-popper. Start future Claude Code sessions on this with the working directory set
-to this folder (`marketing-tools`), not `city-popper` — there's no reason to drag the game's
+Not part of the game (renamed from `city-popper` to `A Rainy Place to Die`; the Studio codebase
+renamed from `krea-2-turbo` to `Trame`). Start future Claude Code sessions on this with the working
+directory set to this folder (`marketing-tools`), not the game's — there's no reason to drag its
 CLAUDE.md into an unrelated conversation.
+
+## A second track: devlog / reputation, not just consulting
+
+As of 2026-10-09, there's a second angle running alongside the consulting funnel below: using the
+game itself (and the agent-orchestration practice of building it) as a build-in-public reputation
+vehicle, rather than trying to sell the game or treating it only as a product. `gather.mjs` and
+`digest.mjs` now take a `--devlog` flag that swaps the closing instruction to a game-dev/indie
+framing instead of the engineering-leads one — same tool, two audiences.
+
+One open, unresolved question hanging over this: the game has a planned NSFW/uncensored edition,
+and the user is weighing whether to cut it, given the tension between "put myself in the game under
+my real name" and his actual career direction (AI governance/policy, a defense contractor, a
+security-adjacent background). Not decided — don't assume either way. If a pseudonym or a cut
+NSFW edition becomes the answer, it changes how (or whether) his real name gets attached to the
+game publicly.
+
+Also noticed, unrelated to this file but worth knowing about: `mcowdery-portfolio` and
+`mcowdery-portfolio-v1-teal` folders have appeared under `proj/` (an Astro site, no git history
+yet) — looks like portfolio-site work is already underway elsewhere, possibly another session.
+Worth checking before starting a third one from scratch.
 
 ## Live pages (Claude Artifacts, not files in this repo)
 

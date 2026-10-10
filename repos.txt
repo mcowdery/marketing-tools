@@ -1,4 +1,4 @@
 # One repo path per line. digest.mjs runs gather.mjs against each of these.
-C:\Users\mcowd\Documents\proj\city-popper
-C:\Users\mcowd\Documents\proj\krea-2-turbo
+C:\Users\mcowd\Documents\proj\A Rainy Place to Die
+C:\Users\mcowd\Documents\proj\Trame
 C:\Users\mcowd\Documents\proj\Nocturne\Nocturne

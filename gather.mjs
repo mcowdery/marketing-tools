@@ -1,11 +1,13 @@
 // Turns recent commits in a repo into a single markdown briefing you can feed to Claude to draft a
-// case-study / post from — it never writes or posts anything itself, just assembles the raw material.
+// post from — it never writes or posts anything itself, just assembles the raw material.
 //
-//   node gather.mjs <repoPath> [--since=14d|YYYY-MM-DD] [--author=<email>]
+//   node gather.mjs <repoPath> [--since=14d|YYYY-MM-DD] [--author=<email>] [--devlog]
 //
 // Default --since is 14 days ago; default --author is mcowdery@gmail.com. Output goes to
 // briefings/<since>_<repoName>.md. Noisy files (lockfiles, snapshots, binary assets) are listed but
 // not diffed, and the whole diff is capped so the briefing stays small enough to actually read.
+// --devlog swaps the closing instruction for a build-in-public / game-dev framing instead of the
+// default case-study-for-engineering-leads one — same gathering, different audience.
 import { execFileSync } from 'node:child_process';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { basename, resolve } from 'node:path';
@@ -27,9 +29,10 @@ const flag = (name, def) => {
   const hit = args.find((a) => a.startsWith(`--${name}=`));
   return hit ? hit.slice(name.length + 3) : def;
 };
+const devlog = args.includes('--devlog');
 
 if (!repoArg) {
-  console.error('usage: node gather.mjs <repoPath> [--since=14d|YYYY-MM-DD] [--author=<email>]');
+  console.error('usage: node gather.mjs <repoPath> [--since=14d|YYYY-MM-DD] [--author=<email>] [--devlog]');
   process.exit(1);
 }
 
@@ -84,11 +87,18 @@ for (const c of commits) {
   sections.push(body);
 }
 
+const instruction = devlog
+  ? `> Using this material, draft a short devlog post — build-in-public, aimed at an indie/game-dev\n` +
+    `> audience (itch.io, r/gamedev, a devlog thread), about what got built and what was actually\n` +
+    `> hard about it. Show, don't pitch: no "excited to announce," no claimed outcomes that didn't\n` +
+    `> happen, and flag anything you're inferring rather than reading directly from the diff.\n`
+  : `> Using this material, draft a short case-study or LinkedIn-style post aimed at engineering leads,\n` +
+    `> about the real problem solved and why it matters. Don't claim outcomes that didn't happen, and\n` +
+    `> flag anything you're inferring rather than reading directly from the diff.\n`;
+
 const header = `# Briefing: ${basename(repo)}, since ${since}\n\n` +
   `${commits.length} commit(s) by ${author}. Feed this to Claude with something like:\n\n` +
-  `> Using this material, draft a short case-study or LinkedIn-style post aimed at engineering leads,\n` +
-  `> about the real problem solved and why it matters. Don't claim outcomes that didn't happen, and\n` +
-  `> flag anything you're inferring rather than reading directly from the diff.\n\n---\n\n`;
+  instruction + `\n---\n\n`;
 
 const outDir = resolve(HERE, 'briefings');
 mkdirSync(outDir, { recursive: true });

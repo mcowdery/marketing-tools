@@ -1,0 +1,4 @@
+# Copy to repos.txt and list one repo path per line. digest.mjs runs gather.mjs against each.
+# repos.txt is gitignored: it holds your local paths.
+C:\path\to\first-repo
+C:\path\to\second-repo

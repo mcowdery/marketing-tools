@@ -2,3 +2,6 @@ briefings/
 drafts/
 log.csv
 node_modules/
+
+# Your own list of repo paths (local paths, may name private projects)
+repos.txt

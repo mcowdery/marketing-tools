@@ -23,7 +23,7 @@ Three steps:
    instruction to a build-in-public framing for an indie/game-dev audience instead of the default
    case-study-for-engineering-leads one.
 
-   For a recurring cadence across every project at once, list their paths in `repos.txt` and run
+   For a recurring cadence across every project at once, list their paths in `repos.txt` (copy `repos.example.txt`; it is gitignored) and run
    `node digest.mjs --since=14d` (add `--devlog` to pass it through to every repo in one go) — it
    calls `gather.mjs` for each one in turn. Do this every 1-2 weeks, not per-commit, so there's
    enough material for a real thread each time: a standing "what happened" habit rather than a
